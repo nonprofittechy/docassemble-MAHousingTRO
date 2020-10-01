@@ -17,6 +17,7 @@ features:
 id: Housing_Temporary_Restraining_Order0002
 code: |
   # This is a placeholder to control logic flow in this interview
+  form_approved_for_email_filing = False
   basic_questions_intro_screen 
   nav.set_section('Housing_Temporary_Restraining_Order0002_intro')
   Housing_Temporary_Restraining_Order0002_intro
@@ -291,6 +292,7 @@ fields:
   - 'Other (breach of my quiet enjoyment)': incident_other
     datatype: yesno
   - 'Describe the other thing your landlord did wrong': incident_other_description
+    maxlength: 990
     datatype: area
     show if: incident_other
     help: |
@@ -542,13 +544,43 @@ subquestion: |
 
 progress: 95
 ---
+id: download form (no send to court)
+mandatory: not form_approved_for_email_filing
+need: 
+  - Housing_Temporary_Restraining_Order0002
+decoration: file-download
+question: |
+  Review, Download, and Deliver Form
+subquestion: |
+  Thank you ${users[0]}. Your form is ready to send to the court. **You
+  need to deliver it on your own. Call the court for instructions.**
+
+  1. Click the preview image below to open the form in a new window. Correct any errors using the "Make changes" button below.
+  1. Download and save or print a copy of this form for your 
+  records.
+  1. You can mail or hand deliver the form, or use the eFile-MA portal. Call the court for instructions.
+
+  Call the Trial Court’s Emergency HelpLine 833-91-COURT (833-912-6878),
+  or call the clerk at the ${courts[0]} at ${courts[0].phone} for more
+  information.
+    
+  ${ form_to_file_no_cover }  
+  
+  ${action_button_html(url_action('review_all_sections'), icon='edit', label=word("Make changes"))}
+  
+progress: 100
+attachment code: Housing_Temporary_Restraining_Order0002_attachment
+section: download
+event: download
+
+---
 id: download form
+mandatory: form_approved_for_email_filing
 comment: |
   The attachment email screen relies on final_form_to_file being defined. This
   will be built from the interview_metadata dictionary's contents, but if you
   add any addenda you will want to set this in a code block somewhere that takes
   priority over basic-questions.yml.
-mandatory: True
 need: 
   - Housing_Temporary_Restraining_Order0002
 decoration: file-download
