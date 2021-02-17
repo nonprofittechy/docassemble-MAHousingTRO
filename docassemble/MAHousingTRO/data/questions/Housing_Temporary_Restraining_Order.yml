@@ -65,7 +65,7 @@ code: |
   # Comment out the line below if you don't want this behavior. 
   #interview_metadata_dict = interview_metadata[ "Housing_Temporary_Restraining_Order0002"]
   #preview_empty_fields
-  mark_unfilled_fields_empty( interview_metadata["Housing_Temporary_Restraining_Order0002"])
+  # mark_unfilled_fields_empty( interview_metadata["Housing_Temporary_Restraining_Order0002"])
   
   Housing_Temporary_Restraining_Order0002_preview_question # Pre-canned preview screen
   nav.set_section('users[0].signature')
@@ -327,6 +327,7 @@ attachment:
     editable: False
     name: Housing TRO
     filename: Housing_TRO
+    skip undefined: True
     pdf template file: Housing_Temporary_Restraining_Order_redacted.pdf
     fields: 
       - "court_name": ${ courts[0] }
@@ -476,6 +477,7 @@ attachment:
     name: Housing TRO
     filename: Housing_TRO
     editable: False
+    skip undefined: True
     pdf template file: Housing_Temporary_Restraining_Order_redacted.pdf
     fields: 
       - "court_name": ${ courts[0] }
@@ -537,15 +539,15 @@ subquestion: |
   You are almost done! Please click on the form below. It will open in a new window so you 
   can review it and make sure it is correct.
   
-  Don't forget to come back to this page to click to the final step of signing and sending 
-  the form to the court. 
+  Don't forget to come back to this page to click to the final step of signing and downloading 
+  the form so you can deliver it to the court. 
   
    ${form_to_sign }
 
 progress: 95
 ---
 id: download form (no send to court)
-mandatory: not form_approved_for_email_filing
+mandatory: True
 need: 
   - Housing_Temporary_Restraining_Order0002
 decoration: file-download
@@ -568,60 +570,6 @@ subquestion: |
   
   ${action_button_html(url_action('review_all_sections'), icon='edit', label=word("Make changes"))}
   
-progress: 100
-attachment code: Housing_Temporary_Restraining_Order0002_attachment
-section: download
-event: download
-
----
-id: download form
-mandatory: form_approved_for_email_filing
-comment: |
-  The attachment email screen relies on final_form_to_file being defined. This
-  will be built from the interview_metadata dictionary's contents, but if you
-  add any addenda you will want to set this in a code block somewhere that takes
-  priority over basic-questions.yml.
-need: 
-  - Housing_Temporary_Restraining_Order0002
-decoration: file-download
-question: |
-  % if not defined('email_success') or not email_success:
-  Review, Download, and Send Form
-  % else:
-  Form delivered
-  % endif
-subquestion: |
-  % if not defined('email_success') or not email_success:
-  Thank you ${users[0]}. Your form is ready to send to the court. **It is not
-  delivered until you complete the delivery process below.**
-
-  1. Click the preview image below to open the form in a new window. Correct any errors using the "Make changes" button below.
-  1. Download and save or print a copy of this form for your 
-  records.
-  1. Click the "Submit to ${courts[0]}" button to send it to the court. 
-  1. You will have a chance to add instructions to the clerk and see the cover page before final delivery.
-  % else:
-  If you do not hear from the court in 1 business day, call the Trial Court’s
-  Emergency HelpLine 833-91-COURT (833-912-6878).
-  
-  The Emergency HelpLine is open:  
-  8:30am - 4:30pm,   
-  Monday - Friday.
-  % endif
-  
-  ${ form_to_file_no_cover }  
-  
-  ${action_button_html(url_action('review_all_sections'), icon='edit', label=word("Make changes"))}
-  
-  % if not defined('email_success') or not email_success:
-    ${ action_button_html( url_action('form_delivery_complete'), id_tag="submitToCourt", label="Submit to " + str(courts[0].name), icon=send_icon, size="md", color="primary")}
-    
-  Or download/email below:
-  % else:
-    Your email has already been delivered to ${courts[0]}
-    
-  [:file-download: Download with cover page](${final_form_to_file.url_for()})    
-  % endif
 progress: 100
 attachment code: Housing_Temporary_Restraining_Order0002_attachment
 section: download
