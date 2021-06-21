@@ -43,7 +43,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
     return out
 
 setup(name='docassemble.MAHousingTRO',
-      version='2.0.1',
+      version='2.1',
       description=(''),
       long_description='# docassemble.MAVirtualCourt\r\n\r\n\r\n\r\n## Author\r\n\r\nQuinten Steenhuis\r\nCaroline Robinson\r\nKate Barry\r\nPlocket\r\nLily Yang\r\nMatthew Brooks\r\nLance Godard\r\nMaeve MacGlinchey\r\nKendall Garner\r\nDavid Colarusso',
       long_description_content_type='text/markdown',
@@ -53,7 +53,7 @@ setup(name='docassemble.MAHousingTRO',
       url='https://docassemble.org',
       packages=find_packages(),
       namespace_packages=['docassemble'],
-      install_requires=['docassemble.MACourts>=0.0.47', 'docassemble.assemblylinewizard>=0.57'],
+      install_requires=['docassemble.ALMassachusetts>=0.0.7', 'docassemble.AssemblyLine>=2.1.2'],
       zip_safe=False,
       package_data=find_package_data(where='docassemble/MAHousingTRO/', package='docassemble.MAHousingTRO'),
      )
