@@ -4,6 +4,9 @@ include:
   - docassemble.ALMassachusetts:al_massachusetts.yml
   - docassemble.MassAccess:massaccess.yml
 ---
+code: |
+  housing_tro_is_standalone = False  
+---
 mandatory: True
 code: |
   interview_metadata # make sure we initialize the object
@@ -29,20 +32,24 @@ code: |
 ---
 id: Housing_Temporary_Restraining_Order0002
 code: |
-  nav.set_section('incident_date')
+  if housing_tro_is_standalone:
+    nav.set_section('incident_date')
   incident_date
   #no_expenses
   #tenant_monthly_rent
-  nav.set_section('landlord_type')
+  if housing_tro_is_standalone:  
+    nav.set_section('landlord_type')
   other_parties[0].name.first
   set_progress(25)
   # landlord_liable_amount
-  nav.set_section('requested_action_deny_possession')
+  if housing_tro_is_standalone:
+    nav.set_section('requested_action_deny_possession')
   requested_action_deny_possession
   allowed_courts = interview_metadata['Housing_Temporary_Restraining_Order0002'].get('allowed courts')
   preferred_court = interview_metadata['Housing_Temporary_Restraining_Order0002'].get('preferred court')
   # users[0].address.geolocate() # fill in the county attribute of address
-  nav.set_section('trial_court')
+  if housing_tro_is_standalone:
+    nav.set_section('trial_court')
   trial_court
   set_party_assignments
   # docket_numbers[0] = ''
@@ -50,18 +57,22 @@ code: |
   #  # docket_numbers[0]
   #  str(defendants)
   set_progress(75)
-  nav.set_section('users[0].name.first')
+  if housing_tro_is_standalone:
+    nav.set_section('users[0].name.first')
   str(users[0])
   users.auto_gather=False
   users.gathered=True
   # users.gather()
   update_answer_title # customize subtitle to include user/OP names
-  nav.set_section('users[0].address.address')
+  if housing_tro_is_standalone:
+    nav.set_section('users[0].address.address')
   users[0].address.address
-  nav.set_section('users[0].phone_number')  
+  if housing_tro_is_standalone:  
+    nav.set_section('users[0].phone_number')  
   users[0].phone_number
   user_needs_interpreter
-  nav.set_section('other_parties[0].address.address')
+  if housing_tro_is_standalone:  
+    nav.set_section('other_parties[0].address.address')
   other_parties[0].address.on_one_line(include_unit=True)
   interview_order_Housing_Temporary_Restraining_Order0002 = True
 ---

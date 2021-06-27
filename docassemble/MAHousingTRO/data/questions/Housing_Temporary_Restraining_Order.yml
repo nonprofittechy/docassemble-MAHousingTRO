@@ -3,6 +3,9 @@ include:
   - housing_tro_to_include.yml
 ---
 code: |
+  housing_tro_is_standalone = True
+---
+code: |
   interview_short_title = "Ask the court for a Temporary Restraining Order"
 ---
 metadata:
