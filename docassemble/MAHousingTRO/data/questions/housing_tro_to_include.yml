@@ -386,3 +386,54 @@ subquestion: |
 fields:
   - code: |
       users[0].address_fields()
+---
+event: review_housing_tro
+question: |
+  Review your answers
+review:
+  - Edit: users[0].name.first
+    button: |
+      Your name: ${ users[0].name.first }
+  - Edit: incident_date
+    button: |
+      Date problem started: ${ incident_date }
+      
+      Problems: 
+      % if incident_locked_out:
+      * My landlord locked me out of the apartment.
+      % endif
+      % if incident_utility:
+      * My landlord shutoff my utilities.
+      % endif
+      % if incident_other:
+      * incident_other_description
+      % endif      
+  - Edit: landlord_type
+  - Edit: requested_action_deny_possession
+    button: |
+      What I want to happen: 
+      
+      % if requested_action_deny_possession:
+      * Deny my landlord possession of the apartment.
+      % endif
+      % if requested_action_deprive_utility:
+      * Order my landlord to restore utility service.
+      % endif
+      % if requested_action_quiet_enjoyment:
+      * Order my landlord to stop breaching my quiet enjoyment.
+      % endif
+  - Edit: trial_court
+    button: |
+      Court: ${ trial_court }
+  - Edit: users[0].address.address
+    button: |
+      My address: ${ users[0].address_block() }
+  - Edit: users[0].phone_number
+    button: |
+      My contact information: ${ users[0].contact_methods() }
+  - Edit: other_parties[0].name.first
+    button: |
+      My landlord's name: ${ other_parties[0] }
+  - Edit: other_parties[0].address.address
+    button: |
+      My landlord's address: ${ other_parties[0].address.address }
