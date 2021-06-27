@@ -399,6 +399,7 @@ review:
       Date problem started: ${ incident_date }
       
       Problems: 
+      
       % if incident_locked_out:
       * My landlord locked me out of the apartment.
       % endif
