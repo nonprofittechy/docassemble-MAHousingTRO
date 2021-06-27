@@ -406,7 +406,7 @@ review:
       * My landlord shutoff my utilities.
       % endif
       % if incident_other:
-      * incident_other_description
+      * ${ incident_other_description }
       % endif      
   - Edit: landlord_type
   - Edit: requested_action_deny_possession
