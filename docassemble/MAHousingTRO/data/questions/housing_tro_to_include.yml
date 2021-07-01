@@ -21,7 +21,7 @@ code: |
     ],
     'preferred court': 'Housing Court',
     'categories': [
-      'Housing',
+      'HO-00-00-00-00',
     ],
     'logic block variable': 'Housing_Temporary_Restraining_Order0002',
     'attachment block variable': 'Housing_Temporary_Restraining_Order0002_attachment',

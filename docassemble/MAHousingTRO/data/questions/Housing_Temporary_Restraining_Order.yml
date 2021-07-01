@@ -85,15 +85,33 @@ subquestion: |
   
   ${ al_user_bundle.send_button_html() }
 
+    
+  ${ action_button_html(url_ask([{'recompute': ['e_file', 'show_resp']}]),
+     label='E-file') }
+
 progress: 100
 section: download
+---
+code: |
+  proxy_conn = ProxyConnection(url='http://efspjava:9000/')
+---
+code: |
+  court_id = 'Jefferson'
+  resp = proxy_conn.FileForReview(court_id, al_court_bundle)
+  e_file = True
+---
+question: |
+  E-file response!
+subquestion: |
+  ${ resp }
+continue button field: show_resp
 ---
 sections:
   - Housing_Temporary_Restraining_Order0002_intro: Introduction
   - incident_date: Your landlord's actions
   - landlord_type: Landlord's name
   - requested_action_deny_possession: What you want
-  - courts[0].name: Court choice
+  - trial_court.name: Court choice
   - users[0].name.first: Your name
   - users[0].address.address: Your address
   - users[0].phone_number: Your contact information
