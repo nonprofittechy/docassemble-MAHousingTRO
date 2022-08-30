@@ -32,7 +32,7 @@ code: |
   signature_date
   nav.set_section('users[0].signature')
   Housing_Temporary_Restraining_Order0002_preview_question
-  nav.set_section('users[0].signature')
+  nav.set_section('users_0_signature')
   signature_fields = ['users[0].signature']
   basic_questions_signature_flow
   users[0].signature
@@ -93,16 +93,15 @@ section: download
 ---
 sections:
   - Housing_Temporary_Restraining_Order0002_intro: Introduction
-  - incident_date: Your landlord's actions
-  - landlord_type: Landlord's name
+  - incident_date: "Your landlord's actions"
+  - landlord_type: "Landlord's name"
   - requested_action_deny_possession: What you want
-  - courts[0].name: Court choice
-  - users[0].name.first: Your name
-  - users[0].address.address: Your address
-  - users[0].phone_number: Your contact information
-  - other_parties[0].address.address: Your landlord's contact information
-  - signature_date: Signature date
-  - users[0].signature: Signature  
+  - users_0_name_first: Your name
+  - users_0_address_address: Your address
+  - trial_court: Court choice
+  - users_0_phone_number: Your contact information
+  - other_parties_0_address_address: "Your landlord's contact information"
+  - users_0_signature: Signature  
   - download: Download and Send
 ---
 code: |
