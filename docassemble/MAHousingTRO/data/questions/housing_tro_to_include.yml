@@ -45,6 +45,14 @@ code: |
   if housing_tro_is_standalone:
     nav.set_section('requested_action_deny_possession')
   requested_action_deny_possession
+  if housing_tro_is_standalone:
+    nav.set_section('users_0_name_first')
+  str(users[0])
+  users.auto_gather=False
+  users.gathered=True
+  if housing_tro_is_standalone:
+    nav.set_section('users_0_address_address')
+  users[0].address.address
   allowed_courts = interview_metadata['Housing_Temporary_Restraining_Order0002'].get('allowed courts')
   preferred_court = interview_metadata['Housing_Temporary_Restraining_Order0002'].get('preferred court')
   # users[0].address.geolocate() # fill in the county attribute of address
@@ -52,29 +60,37 @@ code: |
     nav.set_section('trial_court')
   trial_court
   set_party_assignments
-  # docket_numbers[0] = ''
-  # plaintiff
-  #  # docket_numbers[0]
-  #  str(defendants)
   set_progress(75)
-  if housing_tro_is_standalone:
-    nav.set_section('users[0].name.first')
-  str(users[0])
-  users.auto_gather=False
-  users.gathered=True
   # users.gather()
   update_answer_title # customize subtitle to include user/OP names
-  if housing_tro_is_standalone:
-    nav.set_section('users[0].address.address')
-  users[0].address.address
   if housing_tro_is_standalone:  
-    nav.set_section('users[0].phone_number')  
+    nav.set_section('users_0_phone_number')  
   users[0].phone_number
   user_needs_interpreter
   if housing_tro_is_standalone:  
-    nav.set_section('other_parties[0].address.address')
+    nav.set_section('other_parties_0_address_address')
   other_parties[0].address.on_one_line(include_unit=True)
   interview_order_Housing_Temporary_Restraining_Order0002 = True
+---
+if: housing_tro_is_standalone
+event: other_parties_0_address_address
+code: |
+  force_ask('other_parties[0].address.address')
+---
+if: housing_tro_is_standalone
+event: users_0_phone_number
+code: |
+  force_ask('users[0].phone_number')
+---
+if: housing_tro_is_standalone
+event: users_0_address_address
+code: |
+  force_ask('users[0].address.address')
+---
+if: housing_tro_is_standalone
+event: users_0_name_first
+code: |
+  force_ask('users[0].name.first')
 ---
 id: list expenses
 question: |
