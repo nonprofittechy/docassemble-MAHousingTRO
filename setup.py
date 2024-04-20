@@ -44,7 +44,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
     return out
 
 setup(name='docassemble.MAHousingTRO',
-      version='2.2.4',
+      version='2.2.5',
       description=('This form lets you ask the court for emergency help if your landlord is not fixing bad conditions in your apartment, your utilities are shut off, or your landlord is doing something else to breach your right to "quiet enjoyment" of your home.'),
       long_description='# docassemble.MAHousingTRO\r\n\r\nThis form lets you ask the court for emergency help if your landlord is not fixing bad conditions in your apartment, your utilities are shut off, or your landlord is doing something else to breach your right to "quiet enjoyment" of your home.\r\n\r\n\r\n## Author\r\n\r\n- Quinten Steenhuis\r\n- Caroline Robinson\r\n- Kate Barry\r\n- Plocket\r\n- Lily Yang\r\n- Matthew Brooks\r\n- Lance Godard\r\n- Maeve MacGlinchey\r\n- Kendall Garner\r\n- David Colarusso\r\n',
       long_description_content_type='text/markdown',

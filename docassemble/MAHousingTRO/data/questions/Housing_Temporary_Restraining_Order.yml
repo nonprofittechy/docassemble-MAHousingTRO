@@ -11,6 +11,58 @@ code: |
 metadata:
   title: |
     Housing Temporary Restraining Order
+  short title: |
+    Housing TRO
+  description: |
+    This interview will help you ask the court for emergency help to stop your landlord from:
+
+    * Locking you out of your home without a court order
+    * Shutting off your utilities
+    * Entering your home without permission
+    * Violating your right to "quiet enjoyment" of your home
+
+    You may also use this interview to ask the court to order your landlord
+    to make repairs to your home or to pay you money.
+
+    If your situation is more complex, you may want to use [GetUpToCode](https://getuptocode.org) instead. GetUpToCode
+    can help you with more options to find and report housing problems, including the problems listed above.
+  can_I_use_this_form: |
+    This interview can be used by any tenant who is over 18. If you are being evicted in court, you should use
+    [MADE](https://gbls.org/MADE) instead.
+  before_you_start: |
+    This interview will ask you questions about your landlord, your home, and the problems you are having.
+
+    Before you start, make sure you have your landlord's contact information. If you think your landlord owes you money,
+    you may also want to find any receipts.
+  maturity: production
+  estimated_completion_minutes: 10
+  estimated_completion_delta: 5
+  languages:
+    - en
+  help_page_url: https://www.masslegalhelp.org/housing-apartments-shelter/repairs-bad-conditions/options-if-your-landlord-refuses-make-repairs
+  help_page_title: |
+    Options if your landlord refuses to make repairs
+  jurisdiction: NAM-US-US+MA
+  LIST_topics:
+    - HO-05-00-00-00
+    - HO-02-08-00-00
+    - HO-06-04-00-00
+  tags:
+    - HO-05-00-00-00
+    - HO-02-08-00-00
+    - HO-06-04-00-00
+  original_form: https://www.masslegalhelp.org/sites/default/files/2024-01/lt1-form-15-tro.pdf
+  original_form_published_on: 2020-01-01
+  review_date: 2022-01-01
+  form_titles:
+    - Housing Temporary Restraining Order
+  form_numbers:
+    - Form 15
+  fees:
+    - Filing fee: 90.00
+  update_notes: |
+    Interview drafted in 2020 and reviewed in 2024. Most tenants should use
+    GetUpToCode instead. 
 ---
 features:
   navigation: True
